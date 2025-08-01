@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/alert_button.css' %}">
+
+<div class="container">
+  <form class="emergency-form">
+    {% csrf_token %}
+    <h3 class="assurance-text">Don't be afraid — you will definitely be safe and secure. Our team will contact you very soon.</h3>
+    <h2 class="section-title">Only click if you're truly in trouble.</h2>
+    <button type="button" onclick="sendEmergency()" class="emergency-btn">🚨 Emergency</button>
+  </form>
+</div>
+
+<script>
+function sendEmergency() {
+    console.log("Clicked..................")
+    console.log(navigator.geolocation)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            fetch("/core/emergency/", {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken'),
+    },
+    body: JSON.stringify({ latitude, longitude })
+})
+.then(res => {
+    if (res.status === 401) {
+        showAlert("You need to log in first!", "error");
+        return;
+    }
+
+    return res.json();
+})
+.then(data => {
+    if (data) {
+        showAlert(data.message, 'success');
+    }
+})
+.catch(err => {
+    showAlert("Error: " + err, 'error');
+});
+
+        }, err => {
+            showAlert("Geolocation error: " + err.message, 'error');
+        });
+    } else {
+        showAlert("Geolocation not supported.", 'error');
+    }
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    document.cookie.split(';').forEach(cookie => {
+        const [key, value] = cookie.trim().split('=');
+        if (key === name) cookieValue = decodeURIComponent(value);
+    });
+    return cookieValue;
+}
+
+function showAlert(message, type) {
+    const alertBox = document.createElement('div');
+    alertBox.className = `alert-box ${type}`;
+    alertBox.textContent = message;
+    document.body.appendChild(alertBox);
+    
+    setTimeout(() => {
+        alertBox.classList.add('fade-out');
+        setTimeout(() => alertBox.remove(), 300);
+    }, 3000);
+}
+</script>
+{% endblock %}

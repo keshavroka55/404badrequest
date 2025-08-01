@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block home %}
+<div class="btn-group">
+  <a href="{% url 'profile_edit' %}" class="btn btn-primary rounded-5">Edit Profile</a>
+  <a href="{% url 'password_change' %}" class="btn btn-warning rounded-5">Change Password</a>
+</div>
+{% endblock %}

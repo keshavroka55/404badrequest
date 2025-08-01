@@ -1,0 +1,99 @@
+{% extends "core.html" %}
+{% block home %}
+<style>
+    /* Container for the confirmation message */
+    .confirmation-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f6f8;
+        padding: 20px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Card styling */
+    .confirmation-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        padding: 32px;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Heading */
+    .confirmation-card h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 16px;
+    }
+
+    /* Paragraph */
+    .confirmation-card p {
+        font-size: 1rem;
+        color: #4a5568;
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
+
+    /* Button */
+    .confirmation-card .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #3b82f6;
+        color: #ffffff;
+        font-weight: 500;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .confirmation-card .btn:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+    }
+
+    .confirmation-card .btn:active {
+        transform: translateY(0);
+    }
+
+    /* Animation for card entrance */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        .confirmation-card {
+            padding: 24px;
+        }
+
+        .confirmation-card h2 {
+            font-size: 1.5rem;
+        }
+
+        .confirmation-card p {
+            font-size: 0.875rem;
+        }
+    }
+</style>
+
+<div class="confirmation-container">
+    <div class="confirmation-card">
+        <h2>Confirmation Email Sent</h2>
+        <p>Check your inbox and click the link to activate your account. Be sure to check your spam or junk folder if you don't see it.</p>
+        <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" class="btn">Check Gmail</a>
+    </div>
+</div>
+{% endblock %}

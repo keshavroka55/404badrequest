@@ -1,0 +1,113 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Chat container */
+.chat-container {
+    max-width: 768px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+/* Chat heading */
+.chat-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+/* Chat user list */
+.chat-user-list {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* User item */
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.2s ease;
+}
+
+.user-item:hover {
+    background-color: #f9fafb;
+}
+
+.user-item.active {
+    background-color: #eff6ff;
+}
+
+/* User info */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e5e7eb;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1f2937;
+}
+
+/* Chat button */
+.btn-chat {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #2563eb;
+    color: #ffffff;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-chat:hover {
+    background-color: #1d4ed8;
+}
+
+/* Empty state */
+.empty-state {
+    color: #6b7280;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .chat-container {
+        margin: 20px auto;
+        padding: 0 16px;
+    }
+
+    .user-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .btn-chat {
+        width: 100%;
+        justify-content: center;
+    }
+}

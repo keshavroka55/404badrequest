@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Nepal Tourist Emergency Portal{% endblock %}</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  {% comment %} <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endcomment %}
+</head>
+<body>
+
+  {% for msg in Messages %}
+    {{ msg }}
+  {% endfor %}
+
+  <!-- Navbar -->
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom fixed-top">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'homepage' %}">
+        {% comment %} <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img me-2"> {% endcomment %}
+      </a>
+      
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+          </li>
+
+          
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'emergency-alerts-list' %}">Emergency Alerts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view-complaints' %}">Complaints</a>
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'user' %}">Profile</a>
+          </li>{% endif %}
+          
+          {% if user.is_authenticated %}
+          <li class="nav-item d-flex align-items-center ms-3">
+            {% if user.userprofile.profile_image %}
+              <a class="navbar-brand d-flex align-items-center" href="{% url 'user' %}">
+              <img src="{{ user.userprofile.profile_image.url }}" alt="Profile Image" class="profile-img rounded-circle">
+            {% else %}
+              <img src="{% static 'images/defaultl.jpg' %}" alt="Default Profile" class="profile-img rounded-circle">
+            {% endif %}
+            <span class="ms-2">{{ user.first_name }}</span>
+          </li>
+
+          <li class="nav-item">
+            <form action="{% url 'logout' %}" method="post" class="ms-3">
+              {% csrf_token %}
+              <button class="btn btn-sm btn-outline-danger" type="submit">Logout</button>
+            </form>
+          </li>
+
+          {% else %}
+          <li class="nav-item">
+            <a class="btn btn-sm btn-outline-primary ms-3" href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dynamic Homepage Block -->
+  {% block home %}{% endblock %}
+
+  <!-- Main Content -->
+  <main class="container mt-5 pt-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous"></script>
+</body>
+</html>

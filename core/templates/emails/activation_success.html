@@ -1,0 +1,99 @@
+{% extends "core.html" %}
+{% block home %}
+<style>
+    /* Container for the activation message */
+    .activation-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f6f8;
+        padding: 20px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Card styling */
+    .activation-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        padding: 32px;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Heading */
+    .activation-card h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 16px;
+    }
+
+    /* Paragraph */
+    .activation-card p {
+        font-size: 1rem;
+        color: #4a5568;
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
+
+    /* Button */
+    .activation-card .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #3b82f6;
+        color: #ffffff;
+        font-weight: 500;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .activation-card .btn:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+    }
+
+    .activation-card .btn:active {
+        transform: translateY(0);
+    }
+
+    /* Animation for card entrance */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        .activation-card {
+            padding: 24px;
+        }
+
+        .activation-card h2 {
+            font-size: 1.5rem;
+        }
+
+        .activation-card p {
+            font-size: 0.875rem;
+        }
+    }
+</style>
+
+<div class="activation-container">
+    <div class="activation-card">
+        <h2>Account Activated</h2>
+        <p>Your account is now active. You are logged in and ready to explore!</p>
+        <a href="{% url 'homepage' %}" class="btn">Go to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

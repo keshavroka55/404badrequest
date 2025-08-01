@@ -1,0 +1,256 @@
+{% extends "core.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* Global styles */
+  :root {
+    --primary-color: #1877f2;
+    --secondary-color: #f0f2f5;
+    --text-color: #1c1e21;
+    --muted-text: #65676b;
+    --border-color: #dddfe2;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+  }
+
+  body {
+    background-color: var(--secondary-color);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+  }
+
+  /* Container */
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 15px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+  }
+
+  /* Form Styling */
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #fafafa;
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  input[type="file"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  /* Button Styling */
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    align-self: center;
+    min-width: 150px;
+  }
+
+  .btn-primary:hover {
+    background-color: #365899;
+    transform: translateY(-2px);
+  }
+
+  /* Error Messages */
+  .errorlist {
+    color: #d32f2f;
+    font-size: 12px;
+    margin: 5px 0 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  .errorlist li {
+    margin-bottom: 5px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+
+    .card {
+      padding: 15px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 18px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    input[type="file"] {
+      font-size: 13px;
+      padding: 8px;
+    }
+
+    .btn {
+      font-size: 13px;
+      padding: 10px;
+    }
+  }
+</style>
+    <div class="container">
+      <div class="card">
+        <h2>Edit Your Profile</h2>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        
+          <!-- First Name -->
+          <div class="form-group">
+            <label for="{{ u_form.first_name.id_for_label }}">First Name</label>
+            {{ u_form.first_name }}
+            {% for error in u_form.first_name.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- Last Name -->
+          <div class="form-group">
+            <label for="{{ u_form.last_name.id_for_label }}">Last Name</label>
+            {{ u_form.last_name }}
+            {% for error in u_form.last_name.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- Email -->
+          <div class="form-group">
+            <label for="{{ u_form.email.id_for_label }}">Email</label>
+            {{ u_form.email }}
+            {% for error in u_form.email.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- Country Name -->
+          <div class="form-group">
+            <label for="{{ p_form.country_name.id_for_label }}">Country</label>
+            {{ p_form.country_name }}
+            {% for error in p_form.country_name.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="{{ p_form.phone_number.id_for_label }}">Phone Number</label>
+            {{ p_form.phone_number }}
+            {% for error in p_form.phone_number.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- Location -->
+          <div class="form-group">
+            <label for="{{ p_form.location.id_for_label }}">Location</label>
+            {{ p_form.location }}
+            {% for error in p_form.location.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- Profile Image -->
+          <div class="form-group">
+            <label for="{{ p_form.profile_image.id_for_label }}">Profile Image</label>
+            {{ p_form.profile_image }}
+            {% for error in p_form.profile_image.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <!-- ID Photo -->
+          <div class="form-group">
+            <label for="{{ p_form.id_photo.id_for_label }}">ID Photo</label>
+            {{ p_form.id_photo }}
+            {% for error in p_form.id_photo.errors %}
+              <p class="error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

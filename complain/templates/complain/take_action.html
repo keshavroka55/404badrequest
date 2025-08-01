@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/take_action.css' %}">
+<div class="container">
+  <h2 class="section-title">🛠️ Take Action on Complaint</h2>
+  <div class="complaint-details">
+    <p class="complaint-subject"><strong>{{ complaint.subject }}</strong></p>
+    <p class="complaint-message">{{ complaint.message }}</p>
+  </div>
+  <div class="form-wrapper">
+    <form method="POST" class="action-form">
+      {% csrf_token %}
+      <div class="form-content">
+        <label for="action_note" class="form-label">Action Note:</label>
+        <textarea name="action_note" id="action_note" rows="4" cols="60" class="form-textarea"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Mark as Resolved</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

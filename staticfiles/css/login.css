@@ -1,0 +1,136 @@
+/* Font and background */
+body {
+  background-color: #f1f4f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+/* Wrapper */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Login Box */
+.login-box {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+/* Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-header h2 {
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Form elements */
+.form-label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #3f80ff;
+  background-color: #fff;
+  box-shadow: 0 0 0 0.15rem rgba(63, 128, 255, 0.25);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #3f80ff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #336be3;
+}
+
+.btn-outline-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #e2e6ea;
+}
+
+/* Google login */
+.btn-light {
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Forgot password */
+.text-end a {
+  font-size: 13px;
+  color: #3f80ff;
+  text-decoration: none;
+}
+
+.text-end a:hover {
+  text-decoration: underline;
+}
+
+/* Divider */
+hr {
+  margin: 24px 0;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Alerts */
+.alert-danger {
+  background-color: #ffe3e3;
+  color: #d8000c;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/alertlist.css' %}">
+
+<h2>📍 Emergency Alerts</h2>
+<table border="1">
+  <tr>
+    <th>Username</th>
+    <th>Phone No</th>
+    <th>Country</th>
+    <th>Location</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Time</th>
+    <th>Profile Image</th>
+    {% comment %} <th>ID Photo</th> {% endcomment %}
+  </tr>
+  {% for alert in alerts %}
+  <tr>
+    <td>{{ alert.user.username }}</td>
+    <td>{{ alert.phone_number }}</td>
+    <td>{{ alert.country_name }}</td>
+    <td>{{ alert.location }}</td>
+    <td>{{ alert.latitude }}</td>
+    <td>{{ alert.longitude }}</td>
+    <td>{{ alert.timestamp }}</td>
+    <td><img src="{{ alert.profile_image.url }}" width="80"/></td>
+    {% comment %} <td><img src="{{ alert.profile_id.id_photo.url }}" width="80"/></td> {% endcomment %}
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

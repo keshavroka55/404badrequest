@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Welcome | Nepal Tourist Emergency Portal{% endblock %}
+
+{% block content %}
+<section class="hero-section text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">Welcome to <span class="text-primary">Nepal Tourist Emergency Portal</span></h1>
+    <p class="lead mb-4">Your safety is our priority. Register for emergency support from the Nepal Tourist Safety Organization during your travels.</p>
+    <div class="d-flex justify-content-center gap-3">
+      {% if user.is_authenticated %}
+        <a href="{% url 'emergency-button' %}" class="btn btn-emergency btn-lg px-4">🚨 Very Emergency</a>
+        <a href="{% url 'submit-complaint' %}" class="btn btn-outline-secondary btn-lg px-4">File Complaint</a>
+      {% else %}
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4">Register Now</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="features-section py-5 bg-light">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 feature-card">
+        <h4 class="fw-semibold">Life-or-Death Situation</h4>
+        <p>Immediate emergency support from the Nepal Tourist Safety Organization with just one click.</p>
+        <a href="{% url 'emergency-button' %}" class="btn btn-warning mb-2">🚨 Get Help Now</a>
+      </div>
+      <div class="col-md-4 mb-4 feature-card">
+        <h4 class="fw-semibold">File a Complaint</h4>
+        <p>Your safety matters. Submit valid complaints, and we’ll take swift action to resolve issues.</p>
+        <a href="{% url 'submit-complaint' %}" class="btn btn-warning mb-2">📝 Submit Complaint</a>
+      </div>
+      <div class="col-md-4 mb-4 feature-card">
+        <h4 class="fw-semibold">Tourist Registration</h4>
+        <p>Register or update your travel details for faster access to our support services.</p>
+        <a href="{% url 'profile_edit' %}" class="btn btn-warning mb-2">🖌️ Update Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Need Fast Emergency Support?</h2>
+    <p class="mb-4">
+      Complete your profile setup, <strong>{{ user.username }}</strong>, to enable faster and more efficient emergency services.
+    </p>
+    <a href="{% url 'profile_edit' %}" class="btn btn-warning btn-lg px-4">📝 Complete Your Profile</a>
+  </div>
+</section>
+{% endblock %}

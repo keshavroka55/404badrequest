@@ -1,0 +1,108 @@
+:root {
+  --primary-color: #1877f2;
+  --secondary-color: #f0f2f5;
+  --text-color: #1c1e21;
+  --muted-text: #65676b;
+  --border-color: #dddfe2;
+  --border-radius: 8px;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--secondary-color);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.profile-banner {
+  height: 300px;
+  background: url('../images/default-cover.jpg') no-repeat center/cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 20px 20px;
+}
+
+.profile-pic-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body.profile-info {
+  padding: 20px;
+}
+
+.profile-info h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.username-handle {
+  color: var(--muted-text);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.profile-info p {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.id-photo {
+  width: auto;
+  max-height: 150px;
+  display: block;
+  margin-top: 10px;
+}
+
+.profile-nav {
+  border-top: 1px solid var(--border-color);
+  padding: 15px 20px;
+  background: #fff;
+}
+
+.profile-nav ul {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.profile-nav a {
+  color: var(--muted-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-nav a.active,
+.profile-nav a:hover {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}

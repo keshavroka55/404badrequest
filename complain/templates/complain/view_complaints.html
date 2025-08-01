@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/view_complain.css' %}">
+
+<div class="container">
+  <h2 class="section-title">📋 All Complaints</h2>
+  <ul class="complaints-list">
+    {% for complaint in complaints %}
+      <li class="complaint-item">
+        <div class="complaint-header">
+          <strong class="complaint-subject">Compalin Subject: {{ complaint.subject }}</strong><br>
+          <span class="complaint-meta">{{ complaint.user.username }} - {{ complaint.date_submitted }}</span><br>
+          <span class="complaint-meta">Name: {{ complaint.user.full_name }} - {{ complaint.full_name }}</span><br>
+          <span class="complaint-meta">Contact No. {{ complaint.user.contact_number }} - {{ complaint.contact_number }}</span><br>
+
+
+
+        </div>
+        <p class="complaint-message">Main issues: {{ complaint.message }}</p>
+        <p class="complaint-location">Location: {{ complaint.location }}</p>
+        <p class="complaint-status">Status: 
+          {% if complaint.action_taken %}
+            <span class="status-taken">✅ Action Taken</span>
+          {% else %}
+            <span class="status-pending">❌ Pending</span>
+          {% endif %}
+        </p>
+        {% if not complaint.action_taken %}
+          <a href="{% url 'take-action' complaint.id %}" class="action-link">Take Action</a>
+        {% endif %}
+      </li>
+      <hr class="complaint-divider">
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}  

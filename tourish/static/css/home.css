@@ -1,0 +1,227 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f0f4f8;
+  color: #1a202c;
+  line-height: 1.6;
+}
+
+/* Hero section styles */
+.hero-section {
+  background: linear-gradient(180deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #ffffff;
+  padding: 4rem 0;
+}
+
+.hero-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-section .text-primary {
+  color: #ffd700;
+}
+
+.hero-section .lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.hero-section .btn-emergency {
+  background-color: #dc2626;
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.hero-section .btn-emergency:hover {
+  background-color: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section .btn-outline-secondary {
+  border: 2px solid #e2e8f0;
+  color: #e2e8f0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-section .btn-outline-secondary:hover {
+  background-color: #e2e8f0;
+  color: #1a202c;
+}
+
+/* Features section styles */
+.features-section {
+  background-color: #f9fafb;
+  padding: 4rem 0;
+}
+
+.features-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.feature-card h4 {
+  font-size: 1.25rem;
+  color: #1a202c;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.feature-card .btn-warning {
+  background-color: #f59e0b;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feature-card .btn-warning:hover {
+  background-color: #d97706;
+  transform: translateY(-2px);
+}
+
+/* CTA section styles */
+.cta-section {
+  background-color: #1e3a8a;
+  color: #ffffff;
+  padding: 4rem 0;
+}
+
+.cta-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.cta-section .btn-warning {
+  background-color: #f59e0b;
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-section .btn-warning:hover {
+  background-color: #d97706;
+  transform: translateY(-2px);
+}
+
+/* General button styles */
+.btn-lg {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section .lead {
+    font-size: 1.1rem;
+  }
+
+  .hero-section .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .features-section {
+    padding: 3rem 0;
+  }
+
+  .feature-card {
+    padding: 1rem;
+  }
+
+  .feature-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cta-section {
+    padding: 3rem 0;
+  }
+
+  .cta-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility enhancements */
+.btn:focus,
+.feature-card:focus-within,
+.cta-section a:focus {
+  outline: 3px solid #ffd700;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+.feature-card,
+.btn {
+  transition: all 0.3s ease;
+}

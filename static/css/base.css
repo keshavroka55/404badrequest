@@ -1,0 +1,58 @@
+/* General Reset */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  padding: 0.5rem 1rem;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+/* Search Bar */
+.search-bar {
+  flex-grow: 1;
+  max-width: 400px;
+  margin: 0 1rem;
+}
+
+/* Profile and Buttons */
+.profile-img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-link:hover {
+  color: #007bff;
+}
+
+/* Main Container */
+main.container {
+  padding-top: 20px;
+}
+
+/* Buttons */
+.btn-outline-primary,
+.btn-outline-danger {
+  padding: 6px 12px;
+  font-size: 0.95rem;
+}

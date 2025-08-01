@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div class="container">
+  <div class="card">
+    <div class="profile-banner">
+      <div class="profile-pic-wrapper">
+        {% if user.userprofile.profile_image %}
+          <img src="{{ user.userprofile.profile_image.url }}" alt="Profile Image" class="profile-pic">
+        {% else %}
+          <img src="{% static 'profile_images/default.jpg' %}" alt="Default Image" class="profile-pic">
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card-body profile-info">
+      <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+      <p class="username-handle">@{{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email|default:"None" }}</p>
+      <p><strong>Phone Number:</strong> {{ user.userprofile.phone_number|default:"None" }}</p>
+      <p><strong>Country:</strong> {{ user.userprofile.country_name|default:"None" }}</p>
+      <p><strong>Location:</strong> {{ user.userprofile.location|default:"None" }}</p>
+
+      {% if user.userprofile.id_photo %}
+        <p><strong>ID Photo:</strong></p>
+        <img src="{{ user.userprofile.id_photo.url }}" alt="ID Photo" class="id-photo">
+      {% else %}
+        <p><strong>ID Photo:</strong> Not uploaded</p>
+      {% endif %}
+    </div>
+
+    <div class="profile-nav">
+      <ul>
+        <li><a href="{% url 'profile_edit' %}" class="active">Profile Edit</a></li>
+        <li><a href="{% url 'password_change' %}">Change Password</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

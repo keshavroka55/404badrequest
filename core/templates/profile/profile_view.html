@@ -1,0 +1,58 @@
+```html
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+
+<div class="profile-container">
+  <div class="profile-card">
+    <!-- Top Banner + Profile Image -->
+    <div class="profile-banner" style="background-image: url('{% if profile_user.userprofile.cover_image %}{{ profile_user.userprofile.cover_image.url }}{% else %}{% static 'images/default_banner.jpg' %}{% endif %}');">
+      <div class="profile-pic-container">
+        {% if profile_user.userprofile.profile_image %}
+          <img src="{{ profile_user.userprofile.profile_image.url }}" alt="{{ profile_user.username }}'s Profile Image" class="profile-image" />
+        {% else %}
+          <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Image" class="profile-image" />
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Profile Info -->
+    <div class="profile-info">
+      <h3 class="profile-name">{{ profile_user.first_name }} {{ profile_user.last_name }}</h3>
+      <p class="username-handle">@{{ profile_user.username }}</p>
+    
+      <!-- Email -->
+      <p class="profile-details"><strong>Email:</strong> {{ profile_user.email|default:"Not provided" }}</p>
+    
+      <!-- Phone Number -->
+      <p class="profile-details"><strong>Phone:</strong> {{ profile_user.userprofile.phone_number|default:"Not provided" }}</p>
+    
+      <!-- Country -->
+      <p class="profile-details"><strong>Country:</strong> {{ profile_user.userprofile.country_name|default:"Not specified" }}</p>
+    
+      <!-- Location -->
+      <p class="profile-details"><strong>Location:</strong> {{ profile_user.userprofile.location|default:"Not specified" }}</p>
+    
+      <!-- Profile Image -->
+      {% if profile_user.userprofile.profile_image %}
+        <div class="profile-image">
+          <img src="{{ profile_user.userprofile.profile_image.url }}" alt="Profile Image" height="150px">
+        </div>
+      {% endif %}
+      
+      <!-- ID Photo -->
+      {% comment %} {% if profile_user.userprofile.id_photo %}
+        <div class="profile-id-photo">
+          <strong>ID Photo:</strong><br>
+          <img src="{{ profile_user.userprofile.id_photo.url }}" alt="ID Photo" height="150px">
+        </div>
+      {% else %}
+        <p class="profile-details"><strong>ID Photo:</strong> Not uploaded</p>
+      {% endif %} {% endcomment %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

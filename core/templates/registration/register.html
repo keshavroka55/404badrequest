@@ -1,0 +1,219 @@
+{% extends "core.html" %}
+
+{% block home %}
+<style>
+    /* Container for the registration form */
+    .registration-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f6f8;
+        padding: 20px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Card styling */
+    .registration-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        padding: 32px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Heading */
+    .registration-card h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1a202c;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    /* Form styling */
+    .registration-card form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Field wrapper */
+    .field-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Labels */
+    .field-wrapper label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #1a202c;
+        margin-bottom: 8px;
+    }
+
+    /* Inputs */
+    .field-wrapper input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 1rem;
+        color: #1a202c;
+        background-color: #fafafa;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .field-wrapper input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    /* Error messages */
+    .errorlist {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 0;
+        font-size: 0.875rem;
+        color: #d9534f;
+    }
+
+    .errorlist li {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .errorlist li::before {
+        content: '⚠';
+        font-size: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-block;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #3b82f6;
+        color: #ffffff;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+    }
+
+    .btn-secondary {
+        background-color: #e5e7eb;
+        color: #1a202c;
+        border: 1px solid #d1d5db;
+    }
+
+    .btn-secondary:hover {
+        background-color: #d1d5db;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary:active {
+        transform: translateY(0);
+    }
+
+    /* Animation for card entrance */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        .registration-card {
+            padding: 24px;
+        }
+
+        .registration-card h1 {
+            font-size: 1.75rem;
+        }
+
+        .field-wrapper label {
+            font-size: 0.8125rem;
+        }
+
+        .field-wrapper input {
+            font-size: 0.9375rem;
+            padding: 8px 10px;
+        }
+
+        .btn {
+            font-size: 0.9375rem;
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="registration-container">
+    <div class="registration-card">
+        <h1>Register</h1>
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="field-wrapper">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <ul class="errorlist" aria-live="polite">{{ form.username.errors }}</ul>
+                {% endif %}
+            </div>
+
+            <div class="field-wrapper">
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <ul class="errorlist" aria-live="polite">{{ form.email.errors }}</ul>
+                {% endif %}
+            </div>
+
+            <div class="field-wrapper">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <ul class="errorlist" aria-live="polite">{{ form.password1.errors }}</ul>
+                {% endif %}
+            </div>
+
+            <div class="field-wrapper">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <ul class="errorlist" aria-live="polite">{{ form.password2.errors }}</ul>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="{% url 'login' %}" class="btn btn-secondary">Already have an account? Login</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

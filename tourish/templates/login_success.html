@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block home %}
+{% endblock %}
+
+{% block content %}
+<style>
+  /* Facebook-like color palette */
+  :root {
+    --primary-color: #1877f2;
+    --secondary-color: #f0f2f5;
+    --text-color: #1c1e21;
+    --muted-text: #65676b;
+    --border-color: #dddfe2;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+  }
+
+  body {
+    background-color: var(--secondary-color);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+  }
+
+  /* Success Page Layout */
+  .success-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .success-container img {
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .success-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 15px;
+  }
+
+  .success-container p {
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+
+  .success-container .text-muted {
+    font-size: 14px;
+    color: var(--muted-text);
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    min-width: 150px;
+    margin: 10px;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background-color: #365899;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-danger {
+    border: 1px solid #d32f2f;
+    color: #d32f2f;
+    background-color: transparent;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #d32f2f;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* Button Group */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  /* Redirect Message */
+  .redirect-message {
+    font-size: 13px;
+    color: var(--muted-text);
+    margin-top: 15px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .success-container {
+      margin: 20px auto;
+      padding: 15px;
+    }
+
+    .success-container img {
+      height: 50px;
+    }
+
+    .success-container h2 {
+      font-size: 20px;
+    }
+
+    .success-container p {
+      font-size: 14px;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding: 10px 15px;
+      min-width: 120px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .success-container h2 {
+      font-size: 18px;
+    }
+
+    .success-container p {
+      font-size: 13px;
+    }
+
+    .btn {
+      font-size: 13px;
+      padding: 8px 12px;
+      min-width: 100%;
+    }
+  }
+</style>
+
+<div class="success-container">
+  <img src="{% static 'images/logo.png' %}" alt="save pahuna Logo" />
+  <h2>Welcome Back!</h2>
+  <p>Hello, <strong>{{ user.first_name|default:user.username }}</strong>!</p>
+  <p class="text-muted">You have successfully logged in to Nepal Tourish Emegency Portal.</p>
+  <div class="button-group">
+    <a href="{% url 'homepage' %}" id="redirect-link" class="btn btn-primary">Go to Home Page</a>
+    <a href="{% url 'logout' %}" class="btn btn-outline-danger">Log Out</a>
+  </div>
+  <p class="redirect-message">Redirecting to the homepage in <span id="countdown">2</span> seconds...</p>
+  <script>
+    let countdown = 2;
+    const countdownElement = document.getElementById('countdown');
+    const redirectLink = document.getElementById('redirect-link').href;
+
+    const timer = setInterval(() => {
+      countdown -= 1;
+      countdownElement.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(timer);
+        window.location.href = redirectLink;
+      }
+    }, 1000);
+  </script>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+/* nav.css - Custom Navbar Styling */
+
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.navbar {
+  padding: 0.6rem 1.2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.profile-img {
+  height: 36px;
+  width: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #dee2e6;
+}
+
+.btn-outline-danger {
+  font-size: 0.875rem;
+  padding: 0.35rem 0.75rem;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    align-items: start !important;
+    padding-top: 1rem;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+}
