@@ -33,7 +33,7 @@ urlpatterns = [
     path('core/',include('core.urls')),
     path('complain/',include('complain.urls')),
 
-    path("",include("allauth.urls")),
+    path("accounts/",include("allauth.urls")),
     path("__reload__/", include("django_browser_reload.urls")), # auto reload.
 
 
